@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import Search from '../components/search';
 import Results from '../components/results';
 
-function SearchPage() {
+function SearchPage({ favorites, setFavorites }) {
   const [results, setResults] = useState([]);
-  const [favorites, setFavorites] = useState([]);
 
   return (
     <React.Fragment>
@@ -18,5 +18,10 @@ function SearchPage() {
     </React.Fragment>
   );
 }
+
+SearchPage.propTypes = {
+  favorites: PropTypes.array,
+  setFavorites: PropTypes.func,
+};
 
 export default SearchPage;

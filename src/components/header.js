@@ -4,8 +4,14 @@ import { A } from 'hookrouter';
 function Nav() {
   return (
     <React.Fragment>
-      <A href="/">Search Page</A>
-      <A href="/favorites">Favorites Page</A>
+      <ul className="nav">
+        <li>
+          <A href="/search">Search</A>
+        </li>
+        <li>
+          <A href="/favorites">Favorites</A>
+        </li>
+      </ul>
     </React.Fragment>
   );
 }
@@ -13,8 +19,10 @@ function Nav() {
 function Header() {
   return (
     <React.Fragment>
-      <h1>Ruby Gems search app</h1>
-      <Nav />
+      <header>
+        <h1>Ruby Gems search app</h1>
+        <Nav />
+      </header>
     </React.Fragment>
   );
 }
