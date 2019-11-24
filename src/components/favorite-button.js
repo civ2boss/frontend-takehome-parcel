@@ -14,8 +14,13 @@ function FavoriteButton({ result, favorites, setFavorites }) {
   };
 
   return (
-    <button type="button" className="favorite" onClick={handleFavorite}>
-      {favorites.find(entry => entry === result) ? (
+    <button
+      type="button"
+      aria-label="Favorite"
+      className="favorite"
+      onClick={handleFavorite}
+    >
+      {favorites.find(entry => entry.sha === result.sha) ? (
         <i className="fas fa-heart" />
       ) : (
         <i className="fal fa-heart" />
