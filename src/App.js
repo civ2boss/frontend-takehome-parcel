@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useRoutes } from 'hookrouter';
 
-import Search from './components/search';
-import Results from './components/results';
+import Header from './components/header';
+import SearchPage from './pages/SearchPage';
+import FavoritesPage from './pages/FavoritesPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 import './base.css';
 
+const routes = {
+  '/': () => <SearchPage />,
+  '/search': () => <SearchPage />,
+  '/favorites': () => <FavoritesPage />,
+};
+
 function App() {
-  const [results, setResults] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const routeResult = useRoutes(routes);
 
   return (
     <React.Fragment>
-      <Search setResults={setResults} />
-      <Results
-        results={results}
-        favorites={favorites}
-        setFavorites={setFavorites}
-      />
+      <Header />
+      {routeResult || <NotFoundPage />}
     </React.Fragment>
   );
 }
