@@ -1,13 +1,166 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 body {
   background: #eee;
-  font-family: Georgia;
+  font-family: 'Open Sans', 'sans-serif';
   margin: 0;
   padding: 50px;
 }
 
-.big-lorem-ipsum {
-  font-size: 50px;
+#root {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
+  grid-template-columns: minmax(150px, 1fr);
+}
+
+header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  color: #3c93d5;
+  font-size: 24px;
+}
+
+.favorite-heading,
+.no-favorites {
+  font-size: 24px;
+  text-align: center;
+}
+
+.results ul {
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+input {
+  border: 2px solid hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+  font-size: 22px;
+  padding: 15px 25px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 5px;
+  padding: 15px 25px;
+  font-size: 22px;
+  text-decoration: none;
+  margin: 20px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.btn:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  box-shadow: 0px 1px 0px 0px;
+}
+
+.blue {
+  background-color: #55acee;
+  box-shadow: 0px 5px 0px 0px #3c93d5;
+}
+
+.blue:hover {
+  background-color: #6fc6ff;
+}
+
+.results ul {
+  list-style: none;
+}
+
+.gem {
+  border-bottom: 1px solid hsl(220, 8%, 77%);
+  display: block;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  overflow: auto;
+}
+
+.info {
+  color: #141c22;
+  display: block;
+  float: left;
+  padding-right: 10px;
+  width: 75%;
+}
+
+.name {
+  color: #141c22;
+  margin-bottom: 6px;
+}
+
+.name:focus,
+.name:hover {
+  color: #3c93d5;
+}
+
+.name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.desc {
   font-weight: 300;
-  margin: 0 auto;
-  max-width: 15em;
+  font-size: 18px;
+  line-height: 1.66;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.downloads-count {
+  color: #141c22;
+  float: right;
+  font-weight: 800;
+  font-size: 24px;
+  margin-bottom: 6px;
+  text-align: right;
+}
+
+.downloads-heading {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.66;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.version {
+  color: #a6aab2;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 300;
+  margin-left: 10px;
+}
+
+.favorite {
+  background: none;
+  border: 0;
+  clear: right;
+  cursor: pointer;
+  float: right;
+  font-size: 24px;
 }
