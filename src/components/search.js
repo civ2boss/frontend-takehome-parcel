@@ -4,39 +4,49 @@ import PropTypes from 'prop-types';
 export const RUBY_GEMS_API = 'http://localhost:3000/api/v1/search.json';
 
 function Search({ setResults }) {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState('');
+  const [url, setUrl] = useState(`${RUBY_GEMS_API}?query=`);
 
   useEffect(() => {
-    if (value) {
-      fetch(`${RUBY_GEMS_API}?query=${value}`)
-        .then(response => {
-          if (response.status !== 200) {
-            console.log(
-              `Looks like there was a problem. Status Code: ${response.status}`
-            );
-            return;
-          }
+    const fetchResults = async () => {
+      const response = await fetch(url);
 
-          // Examine the text in the response
-          response.json().then(data => {
-            setResults(data);
-          });
-        })
-        .catch(err => {
-          console.log('Fetch Error :-S', err);
-        });
+      if (response.status !== 200) {
+        console.log(
+          `Looks like there was a problem. Status Code: ${response.status}`
+        );
+        return;
+      }
+
+      const json = await response.json();
+
+      setResults(json);
+    };
+
+    if (value) {
+      fetchResults();
     }
-  }, [value]);
+  }, [url]);
+
+  const handleChangeValue = e => {
+    setValue(e.target.value);
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    const data = new FormData(e.target);
-    setValue(data.get('name'));
+    setUrl(`${RUBY_GEMS_API}?query=${value}`);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="name" id="name" />
+      <input
+        type="text"
+        name="name"
+        id="name"
+        aria-label="Name"
+        value={value}
+        onChange={handleChangeValue}
+      />
       <button className="btn blue" type="submit">
         Search Gems
       </button>

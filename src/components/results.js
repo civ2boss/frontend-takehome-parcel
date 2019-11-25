@@ -17,7 +17,7 @@ function Results({ results, favorites, setFavorites }) {
             downloads,
           } = result;
           return (
-            <li className="gem" key={sha}>
+            <li className="gem" key={sha} data-testid={sha}>
               <span className="info">
                 <h2 className="name">
                   <a href={projectUri}>
