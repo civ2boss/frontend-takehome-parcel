@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-function FavoriteButton({ result, favorites, setFavorites }) {
+import { FavoritesContext } from './FavoritesContext';
+
+function FavoriteButton({ result }) {
+  const { favorites, setFavorites } = useContext(FavoritesContext);
+
   const handleFavorite = () => {
     const foundIndex = favorites.findIndex(entry => entry.sha === result.sha);
     if (foundIndex >= 0) {
@@ -31,8 +35,6 @@ function FavoriteButton({ result, favorites, setFavorites }) {
 
 FavoriteButton.propTypes = {
   result: PropTypes.object,
-  favorites: PropTypes.array,
-  setFavorites: PropTypes.func,
 };
 
 export default FavoriteButton;

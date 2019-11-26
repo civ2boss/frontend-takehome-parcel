@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
+import { FavoritesContext } from './FavoritesContext';
 import FavoriteButton from './favorite-button';
 
-function Results({ results, favorites, setFavorites }) {
+function Results({ results }) {
+  const { favorites, setFavorites } = useContext(FavoritesContext);
   return (
     <div className="results">
       <ul>
@@ -32,11 +34,7 @@ function Results({ results, favorites, setFavorites }) {
                 {downloads.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 <span className="downloads-heading">Downloads</span>
               </p>
-              <FavoriteButton
-                result={result}
-                favorites={favorites}
-                setFavorites={setFavorites}
-              />
+              <FavoriteButton result={result} />
             </li>
           );
         })}
@@ -47,8 +45,6 @@ function Results({ results, favorites, setFavorites }) {
 
 Results.propTypes = {
   results: PropTypes.array,
-  favorites: PropTypes.array,
-  setFavorites: PropTypes.func,
 };
 
 export default Results;

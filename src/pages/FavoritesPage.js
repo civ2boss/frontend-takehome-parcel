@@ -1,19 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
+import { FavoritesContext } from '../components/FavoritesContext';
 import Results from '../components/results';
 
-function FavoritesPage({ favorites, setFavorites }) {
+function FavoritesPage() {
+  const { favorites, setFavorites } = useContext(FavoritesContext);
+
   return (
     <React.Fragment>
       {favorites.length > 0 ? (
         <React.Fragment>
           <h2 className="favorite-heading">Favorites</h2>
-          <Results
-            results={favorites}
-            favorites={favorites}
-            setFavorites={setFavorites}
-          />
+          <Results results={favorites} />
         </React.Fragment>
       ) : (
         <p className="no-favorites">No favorites yet</p>
@@ -21,10 +20,5 @@ function FavoritesPage({ favorites, setFavorites }) {
     </React.Fragment>
   );
 }
-
-FavoritesPage.propTypes = {
-  favorites: PropTypes.array,
-  setFavorites: PropTypes.func,
-};
 
 export default FavoritesPage;
