@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import { FavoritesProvider } from '../../components/FavoritesContext';
+import { FavoritesProvider } from '../FavoritesProvider';
 import FavoriteButton from '../favorite-button';
 
 test('shows unfilled heart by default', () => {

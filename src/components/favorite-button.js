@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FavoritesContext } from './FavoritesContext';
+import { useFavorites } from './FavoritesProvider';
 
 function FavoriteButton({ result }) {
-  const { favorites, setFavorites } = useContext(FavoritesContext);
+  const { favorites, setFavorites } = useFavorites();
 
   const handleFavorite = () => {
     const foundIndex = favorites.findIndex(entry => entry.sha === result.sha);

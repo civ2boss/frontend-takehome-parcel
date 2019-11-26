@@ -1,13 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { FavoritesContext } from '../components/FavoritesContext';
+import { useFavorites } from '../components/FavoritesProvider';
 import Search from '../components/search';
 import Results from '../components/results';
 
 function SearchPage() {
   const [results, setResults] = useState([]);
-  const { favorites, setFavorites } = useContext(FavoritesContext);
+  const { favorites, setFavorites } = useFavorites();
 
   return (
     <React.Fragment>

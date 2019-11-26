@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, waitForElement } from '@testing-library/react';
 
-import { FavoritesProvider } from '../../components/FavoritesContext';
+import { FavoritesProvider } from '../../components/FavoritesProvider';
 import SearchPage from '../SearchPage';
 
 test('search loads results from Ruby Gems API', async () => {

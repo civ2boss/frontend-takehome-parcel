@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FavoritesContext } from './FavoritesContext';
+import { useFavorites } from './FavoritesProvider';
 import FavoriteButton from './favorite-button';
 
 function Results({ results }) {
-  const { favorites, setFavorites } = useContext(FavoritesContext);
+  const { favorites, setFavorites } = useFavorites();
   return (
     <div className="results">
       <ul>

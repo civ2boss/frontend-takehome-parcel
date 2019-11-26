@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FavoritesContext } from '../components/FavoritesContext';
+import { useFavorites } from '../components/FavoritesProvider';
 import Results from '../components/results';
 
 function FavoritesPage() {
-  const { favorites, setFavorites } = useContext(FavoritesContext);
+  const { favorites, setFavorites } = useFavorites();
 
   return (
     <React.Fragment>

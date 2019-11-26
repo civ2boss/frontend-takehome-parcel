@@ -3,7 +3,7 @@ import { useRoutes, useRedirect } from 'hookrouter';
 
 import useLocalStorage from './hooks/useLocalStorage';
 
-import { FavoritesProvider } from './components/FavoritesContext';
+import { FavoritesProvider } from './components/FavoritesProvider';
 import Header from './components/header';
 import SearchPage from './pages/SearchPage';
 import FavoritesPage from './pages/FavoritesPage';
