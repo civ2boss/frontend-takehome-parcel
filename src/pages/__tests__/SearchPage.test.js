@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent, waitForElement } from '@testing-library/react';
 
+import { FavoritesProvider } from '../../components/FavoritesContext';
 import SearchPage from '../SearchPage';
 
 test('search loads results from Ruby Gems API', async () => {
@@ -46,7 +47,9 @@ test('search loads results from Ruby Gems API', async () => {
   );
 
   const { getByLabelText, getByText, getByTestId } = render(
-    <SearchPage favorites={favorites} setFavorites={setFavorites} />
+    <FavoritesProvider value={{ favorites, setFavorites }}>
+      <SearchPage />
+    </FavoritesProvider>
   );
 
   fireEvent.change(getByLabelText(/name/i), { target: { value: 'rails' } });

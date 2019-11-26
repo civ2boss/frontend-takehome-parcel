@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
+import { FavoritesProvider } from '../../components/FavoritesContext';
 import FavoriteButton from '../favorite-button';
 
 test('shows unfilled heart by default', () => {
@@ -9,11 +10,9 @@ test('shows unfilled heart by default', () => {
   const setFavorites = () => {};
 
   const { container } = render(
-    <FavoriteButton
-      result={result}
-      favorites={favorites}
-      setFavorites={setFavorites}
-    />
+    <FavoritesProvider value={{ favorites, setFavorites }}>
+      <FavoriteButton result={result} />
+    </FavoritesProvider>
   );
 
   expect(container.querySelector('.fa-heart')).toMatchInlineSnapshot(`
@@ -29,11 +28,9 @@ test('shows filled heart when clicked', () => {
   const setFavorites = () => {};
 
   const { container, getByLabelText } = render(
-    <FavoriteButton
-      result={result}
-      favorites={favorites}
-      setFavorites={setFavorites}
-    />
+    <FavoritesProvider value={{ favorites, setFavorites }}>
+      <FavoriteButton result={result} />
+    </FavoritesProvider>
   );
 
   fireEvent.click(getByLabelText(/Favorite/i));
